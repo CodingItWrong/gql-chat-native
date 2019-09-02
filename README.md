@@ -1,4 +1,4 @@
-# gql-chat-client-vue
+# gql-chat-client-native
 
 Example client for a chat app using GraphQL subscriptions with React Native and Apollo Client.
 
