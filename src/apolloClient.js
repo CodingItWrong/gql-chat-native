@@ -6,12 +6,23 @@ import {ApolloLink, split} from 'apollo-link';
 import {WebSocketLink} from 'apollo-link-ws';
 import {getMainDefinition} from 'apollo-utilities';
 
+let httpUrl;
+let wsUrl;
+
+if (__DEV__) {
+  httpUrl = 'http://localhost:3000/graphql';
+  wsUrl = 'ws://localhost:3000/graphql';
+} else {
+  httpUrl = 'https://ciw-gql-chat.herokuapp.com/graphql';
+  wsUrl = 'wss://ciw-gql-chat.herokuapp.com/graphql';
+}
+
 const httpLink = new HttpLink({
-  uri: 'http://localhost:3000/graphql',
+  uri: httpUrl,
 });
 
 const wsLink = new WebSocketLink({
-  uri: 'ws://localhost:3000/graphql',
+  uri: wsUrl,
   options: {
     reconnect: true,
   },
